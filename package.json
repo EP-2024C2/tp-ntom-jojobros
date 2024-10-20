@@ -1,0 +1,19 @@
+{
+  "name": "trabajo-practico1-edp",
+  "version": "1.0.0",
+  "description": "este proyecto es para la materia estrategias de persistencia con el objetivo de ser evaluado",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grupo JojoBros",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.1",
+    "sequelize": "^6.37.4",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}
