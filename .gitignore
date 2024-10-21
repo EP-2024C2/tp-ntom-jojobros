@@ -1,0 +1,15 @@
+# Ignorar el archivo .env
+.env
+
+# Ignorar las dependencias de node_modules
+node_modules/
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar archivos de base de datos de SQLite (si lo estás usando)
+*.sqlite
+*.sqlite3
+
+# Ignorar archivos de configuración específicos del entorno
+.DS_Store  # Para MacOS

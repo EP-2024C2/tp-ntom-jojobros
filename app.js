@@ -3,6 +3,7 @@ const app = express();
 const productosRoutes = require('./routes/productos');
 const fabricantesRoutes = require('./routes/fabricantes');
 const componentesRoutes = require('./routes/componentes');
+require('dotenv').config();
 
 app.use(express.json()); // Middleware para procesar JSON en las solicitudes
 
