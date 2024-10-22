@@ -10,6 +10,29 @@ exports.getAllProductos = async (req, res) => {
     }
 };
 
+exports.getAllFabricantes = async (req, res) => {
+    try {
+        const fabricantes = await Fabricante.findAll();
+        res.status(200).json(fabricantes);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los fabricantes' });
+    }
+};
+
+// Obtener un fabricante por ID
+exports.getFabricanteById = async (req, res) => {
+    try {
+        const fabricante = await Fabricante.findByPk(req.params.id); // Buscar por el ID
+        if (fabricante) {
+            res.status(200).json(fabricante); // Si lo encuentra, lo devuelve en la respuesta
+        } else {
+            res.status(404).json({ error: 'Fabricante no encontrado' }); // Si no lo encuentra, envía un error 404
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener el fabricante' }); // Error de servidor
+    }
+};
+
 // Obtener un producto por ID
 exports.getProductoById = async (req, res) => {
     try {
@@ -61,6 +84,61 @@ exports.deleteProducto = async (req, res) => {
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar el producto' });
+    }
+};
+// Crear un nuevo fabricante
+exports.createFabricante = async (req, res) => {
+    try {
+        const nuevoFabricante = await Fabricante.create(req.body);
+        res.status(201).json(nuevoFabricante);
+    } catch (error) {
+        res.status(400).json({ error: 'Error al crear el fabricante' });
+    }
+};
+
+// Actualizar un fabricante existente
+exports.updateFabricante = async (req, res) => {
+    try {
+        const fabricante = await Fabricante.findByPk(req.params.id);
+        if (fabricante) {
+            await fabricante.update(req.body);
+            res.status(200).json(fabricante);
+        } else {
+            res.status(404).json({ error: 'Fabricante no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar el fabricante' });
+    }
+};
+
+// Eliminar un fabricante
+exports.deleteFabricante = async (req, res) => {
+    try {
+        const fabricante = await Fabricante.findByPk(req.params.id);
+        if (fabricante) {
+            await fabricante.destroy();
+            res.status(200).json({ message: 'Fabricante eliminado' });
+        } else {
+            res.status(404).json({ error: 'Fabricante no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar el fabricante' });
+    }
+};
+
+// Obtener los productos de un fabricante
+exports.getProductosForFabricante = async (req, res) => {
+    try {
+        const fabricante = await Fabricante.findByPk(req.params.id, {
+            include: [Producto] // Incluir los productos relacionados
+        });
+        if (fabricante) {
+            res.status(200).json(fabricante.Productos);
+        } else {
+            res.status(404).json({ error: 'Fabricante no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los productos del fabricante' });
     }
 };
 

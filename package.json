@@ -4,13 +4,17 @@
   "description": "este proyecto es para la materia estrategias de persistencia con el objetivo de ser evaluado",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env PORT=3001 nodemon src/app.js",
+    "start": "node app.js"
   },
   "author": "Grupo JojoBros",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "joi": "^17.13.3",
+    "mysql2": "^3.11.3",
     "sequelize": "^6.37.4",
     "sqlite3": "^5.1.7"
   },

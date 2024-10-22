@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const componentesController = require('../controllers/componentesController');
+const componentesController = require('../controllers/componenteController');
 
 // Ruta para obtener todos los componentes
 router.get('/', componentesController.getAllComponentes);
